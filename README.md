@@ -1,5 +1,7 @@
 Vídeo Shader 1: https://www.youtube.com/watch?v=uqjoDE-VyWs
+
 Vídeo Shader 2: https://www.youtube.com/watch?v=GxXAoi2o_KA
+
 Vídeo Shader 3: https://www.youtube.com/watch?v=ER8gnNLcbAI
 
 Motivación: "La principal motivación para el desarrollo de estos shaders fue lograr una 
