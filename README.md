@@ -8,7 +8,7 @@ Inicialmente, se implementaron sistemas de coordenadas básicos (polar, cartesia
 funciones senoidales y fract() para generar ondas y patrones repetitivos. La interacción con el usuario y el tiempo 
 se implementó multiplicando o sumando u_mouse y u_time a las coordenadas o al resultado final, permitiendo una fácil parametrización de los efectos."
 
-Shader 1:
+**Shader 1**:
   El objetivo de este desarrollo fue transformar un patrón de diamante/romboide, generado inicialmente por el sistema de coordenadas axiales (inclinadas) y una distancia euclidiana estándar, en un patrón de teselado hexagonal perfecto. La corrección era necesaria porque   la fórmula de distancia cartesiana no respeta la geometría hexagonal de la celda de repetición, que es un romboide. Esto se logró implementando una métrica de distancia que respeta la geometría hexagonal.
   
   - Desarrollo del Patrón: Normalización y Escala: Las coordenadas de fragmento (gl_FragCoord.xy) se normalizan a [0, 1] y se escalan a 20 (st = st * 20.).
@@ -16,7 +16,7 @@ Shader 1:
   - Onda de Patrón: El patrón interno se basa en la distancia del fragmento al centro de su celda float hd = max(v.x, v.x * .5 + v.y), siendo vec2 v = abs(st - floor(st) - .5). Se utilizó una función sinusoidal sobre esta distancia (sin(hd * 10. + u_time * 2.) * .5 +.5)     para generar anillos concéntricos animados que se expanden y contraen con el tiempo (u\_time).
   - Interacción/Color: El color final se define multiplicando el patrón monocromático por un vector de color parametrizado por u_mouse y u_time.
 
-Shader 2:
+**Shader 2**:
   El objetivo de este shader es generar un patrón de bandas o anillos concéntricos que se expanden y contraen dinámicamente desde el centro de la pantalla. La interacción con el ratón (u_mouse) se utiliza para controlar la densidad y la tonalidad del patrón, mientras que     el tiempo (u_time) asegura una animación constante. Se jugó bastante con la interacción del ratón en el eje y, así que entre mayor sea el valor de este se irán consiguiendo patrones mas extraños cada vez, pero es interesante ver las cosas que suceden cuando vas subiendo    y bajando, además el u_time hace que parezca como si estuviera en moviemiento el patrón en cada momento.
 
   - Distancia al Centro (d):Se calcula la distancia euclidiana de cada fragmento al centro de la pantalla. Primero, las coordenadas de fragmento se normalizan utilizando la resolución (gl_FragCoord.xy / u_resolution.xy) para mapear la pantalla al rango [0, 1] Luego, la      función distance() mide la separación entre estas coordenadas normalizadas y el centro (vec2(0.5)).
@@ -27,7 +27,7 @@ Shader 2:
     - Canal Verde: Controlado por la posición X del ratón (u_mouse.x).
     - Canal Azul: Controlado por la posición Y del ratón (u_mouse.y).
 
-Shader 3:
+**Shader 3**:
   Este shader está diseñado para generar un patrón de segmentos o bandas radiales y dinámicas que giran y se distorsionan violentamente alrededor del centro de la pantalla. La implementación utiliza un sistema de coordenadas polares y una lógica condicional estricta       para que el comportamiento del patrón cambie dramáticamente en diferentes regiones del espacio, creando un efecto de vórtice oscilante.
 
   - Mapeo Cartesiano Centralizado: Las coordenadas del fragmento se remapean al rango [-1, 1] en X e Y, estableciendo el centro de la pantalla en el origen (0, 0).
